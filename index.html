@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0c0e1a">
-  <meta name="description" content="Тренажёр по компьютерным сетям. Четыре варианта квиза с вопросами на английском и объяснениями на русском.">
+  <meta name="description" content="Тренажёр по компьютерным сетям. 23 вопроса на английском, объяснения на русском и фотографии четырёх вариантов.">
   <title>Тренажёр по компьютерным сетям</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="questions.js"></script>
-  <script defer src="app.js"></script>
+  <link rel="stylesheet" href="styles.css?v=photo-verified">
+  <script defer src="questions.js?v=photo-verified"></script>
+  <script defer src="app.js?v=photo-verified"></script>
 </head>
 <body>
   <div class="shell">
@@ -24,9 +24,10 @@
     <main>
       <section class="hero" aria-labelledby="page-title">
         <div class="hero-content">
-          <p class="eyebrow" id="quiz-stats">4 ВАРИАНТА · 85 ВОПРОСОВ</p>
+          <p class="eyebrow" id="quiz-stats">3 ВАРИАНТА · 23 ВОПРОСА</p>
           <h1 id="page-title">Тренажёр по сетям</h1>
           <p>Отвечай на английском, разбирай решения на русском и повторяй вопросы, в которых ошибся.</p>
+          <a class="photo-jump" href="#photo-variants">Фотографии всех вариантов ↓</a>
         </div>
         <div class="hero-art" aria-hidden="true">
           <b></b><b></b><b></b><b></b>
@@ -63,6 +64,29 @@
           <div class="sr-only" id="live-status" role="status" aria-live="polite"></div>
         </div>
       </div>
+
+      <details class="panel exam-photos" id="exam-photos">
+        <summary>Фотографии вариантов</summary>
+        <p id="photo-variants">Вариант 3 и другие вопросы из приложения к документу можно посмотреть на фотографиях. Нажми на фотографию, чтобы открыть её в полном размере.</p>
+        <div class="exam-photo-grid">
+          <a class="exam-photo" id="photo-variant-1" href="photos/variant-1.webp" target="_blank" rel="noopener" aria-label="Открыть фото варианта 1 в новой вкладке">
+            <img src="photos/variant-1.webp" width="1494" height="1138" loading="lazy" decoding="async" alt="">
+            <span>Вариант 1 <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="exam-photo" id="photo-variant-2" href="photos/variant-2.webp" target="_blank" rel="noopener" aria-label="Открыть фото варианта 2 в новой вкладке">
+            <img src="photos/variant-2.webp" width="1420" height="1012" loading="lazy" decoding="async" alt="">
+            <span>Вариант 2 <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="exam-photo" id="photo-variant-3" href="photos/variant-3.webp" target="_blank" rel="noopener" aria-label="Открыть фото варианта 3 в новой вкладке">
+            <img src="photos/variant-3.webp" width="1205" height="848" loading="lazy" decoding="async" alt="">
+            <span>Вариант 3 <span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="exam-photo" id="photo-variant-4" href="photos/variant-4.webp" target="_blank" rel="noopener" aria-label="Открыть фото варианта 4 в новой вкладке">
+            <img src="photos/variant-4.webp" width="1377" height="1050" loading="lazy" decoding="async" alt="">
+            <span>Вариант 4 <span aria-hidden="true">↗</span></span>
+          </a>
+        </div>
+      </details>
     </main>
 
     <footer class="footer">

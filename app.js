@@ -1,7 +1,7 @@
 "use strict";
 
 const variants = window.QUIZ_VARIANTS ?? [];
-const storageKey = "network-quiz-progress-v1";
+const storageKey = "network-quiz-photo-verified-progress-v1";
 const practice = document.querySelector("#practice");
 const trainMode = document.querySelector("#train-mode");
 const errorsMode = document.querySelector("#errors-mode");
@@ -52,6 +52,14 @@ function plural(number, forms) {
   if (lastTwo >= 11 && lastTwo <= 14) return forms[2];
   if (last === 1) return forms[0];
   return last >= 2 && last <= 4 ? forms[1] : forms[2];
+}
+
+function updateQuizStats() {
+  const total = variants.reduce((sum, variant) => sum + variant.questions.length, 0);
+  const variantLabel = plural(variants.length, ["вариант", "варианта", "вариантов"]);
+  const questionLabel = plural(total, ["вопрос", "вопроса", "вопросов"]);
+  document.querySelector("#quiz-stats").textContent =
+    `${variants.length} ${variantLabel.toUpperCase()} · ${total} ${questionLabel.toUpperCase()}`;
 }
 
 function recordKey(variant, question) {
@@ -181,10 +189,14 @@ function renderQuestion(question, total) {
   const card = create("section", "panel question-card");
   card.setAttribute("aria-labelledby", "question-title");
   const meta = create("div", "question-meta");
+  const numberInVariant = state.index + 1;
   const position = state.mode === "errors"
-    ? `Разбор ${state.index + 1} из ${total} · Вопрос ${question.id}`
-    : `Вопрос ${question.id} из ${total}`;
+    ? `Разбор ${numberInVariant} из ${total} · Вопрос ${question.id}`
+    : `Вопрос ${numberInVariant} из ${total}`;
   meta.append(create("span", "question-position", position));
+  if (state.mode === "train" && question.id !== numberInVariant) {
+    meta.append(create("span", "topic-chip", `№ ${question.id} в оригинале`));
+  }
   if (question.topic) meta.append(create("span", "topic-chip", question.topic));
   const title = create("h2", "question-title", question.prompt);
   title.id = "question-title";
@@ -338,6 +350,7 @@ function renderSummary(summary) {
 }
 
 if (variants.length) {
+  updateQuizStats();
   if (window.matchMedia("(max-width: 720px)").matches) {
     document.querySelector(".question-picker").open = false;
   }

@@ -586,6 +586,35 @@ a { color: var(--accent); }
 .empty-card > :is(.action-buttons, .button) { margin-top: 18px; }
 .empty-card > .action-buttons { justify-content: flex-start; }
 
+.photo-jump {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.82rem;
+  font-weight: 650;
+  text-underline-offset: 3px;
+}
+
+.exam-photos { margin-top: 18px; padding: 16px; }
+.exam-photos > summary { cursor: pointer; font-size: 0.95rem; font-weight: 700; }
+.exam-photos > summary::marker { color: var(--accent); }
+.exam-photos > p { margin: 12px 0 16px; color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+.exam-photo-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+
+.exam-photo {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.exam-photo:hover { border-color: var(--accent); }
+.exam-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; }
+.exam-photo > span { display: flex; justify-content: space-between; padding: 9px 11px; font-size: 0.85rem; }
+.exam-photo > span > span { color: var(--accent); }
+
 .footer {
   display: flex;
   flex-wrap: wrap;
@@ -618,12 +647,13 @@ a { color: var(--accent); }
   .dashboard { grid-template-columns: minmax(0, 1fr); gap: 15px; margin-top: 15px; }
   .sidebar { gap: 12px; }
   .main-column { gap: 11px; }
-  .variant-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .variant-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .variant-button { min-height: 45px; }
   .variant-count { display: none; }
   .question-grid { grid-template-columns: repeat(10, minmax(0, 1fr)); }
   .question-dot { min-height: 37px; }
   .progress-label { margin-bottom: 3px; }
+  .exam-photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer { margin-top: 20px; }
 }
 
