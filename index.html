@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0e1a">
+  <meta name="description" content="Тренажёр по компьютерным сетям. Четыре варианта квиза с вопросами на английском и объяснениями на русском.">
+  <title>Тренажёр по компьютерным сетям</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="questions.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>Computer Networks</span>
+      </div>
+      <span class="masthead-meta"><span class="status-dot" aria-hidden="true"></span> Подготовка к квизу</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-content">
+          <p class="eyebrow" id="quiz-stats">4 ВАРИАНТА · 85 ВОПРОСОВ</p>
+          <h1 id="page-title">Тренажёр по сетям</h1>
+          <p>Отвечай на английском, разбирай решения на русском и повторяй вопросы, в которых ошибся.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <b></b><b></b><b></b><b></b>
+          <i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </section>
+
+      <div class="dashboard">
+        <aside class="sidebar" aria-label="Варианты и прогресс">
+          <section class="panel variant-panel" aria-labelledby="variant-heading">
+            <h2 class="panel-heading" id="variant-heading">Варианты</h2>
+            <div class="variant-list" id="variants"></div>
+          </section>
+          <section class="panel progress-panel" aria-labelledby="progress-heading">
+            <h2 class="panel-heading" id="progress-heading">Твой прогресс</h2>
+            <div class="progress-track" id="progress-track" role="progressbar" aria-labelledby="progress-heading" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p class="progress-label" id="progress-label"></p>
+            <details class="question-picker" open>
+              <summary>Все вопросы</summary>
+              <div class="question-grid" id="question-grid" aria-label="Перейти к вопросу"></div>
+            </details>
+          </section>
+        </aside>
+
+        <div class="main-column">
+          <nav class="mode-tabs" aria-label="Режим подготовки">
+            <button type="button" class="mode-tab" id="train-mode" aria-pressed="true">Тренировка</button>
+            <button type="button" class="mode-tab" id="errors-mode" aria-pressed="false">Разбор ошибок<span id="error-count"></span></button>
+          </nav>
+          <div id="practice"></div>
+          <noscript><p class="panel empty-card">Включи JavaScript в браузере, чтобы открыть тренажёр.</p></noscript>
+          <div class="sr-only" id="live-status" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <span id="storage-note">Прогресс сохраняется в браузере.</span>
+      <a href="https://github.com/Nikeka-git/network-quiz">Исходный код на GitHub ↗</a>
+    </footer>
+  </div>
+</body>
+</html>
