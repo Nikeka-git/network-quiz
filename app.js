@@ -1,7 +1,8 @@
 "use strict";
 
 const variants = window.QUIZ_VARIANTS ?? [];
-const storageKey = "network-quiz-photo-verified-progress-v1";
+const storageKey = "network-quiz-photo-progress-v2";
+const previousStorageKey = "network-quiz-photo-verified-progress-v1";
 const practice = document.querySelector("#practice");
 const trainMode = document.querySelector("#train-mode");
 const errorsMode = document.querySelector("#errors-mode");
@@ -18,7 +19,12 @@ const state = {
 function readProgress() {
   try {
     const saved = JSON.parse(localStorage.getItem(storageKey));
-    return saved && typeof saved === "object" && !Array.isArray(saved) ? saved : {};
+    if (saved && typeof saved === "object" && !Array.isArray(saved)) return saved;
+    const previous = JSON.parse(localStorage.getItem(previousStorageKey));
+    const compatibleKeys = window.QUIZ_PREVIOUS_PROGRESS_IDS ?? [];
+    return Object.fromEntries(
+      compatibleKeys.filter((key) => previous?.[key]).map((key) => [key, previous[key]]),
+    );
   } catch {
     return {};
   }
@@ -196,6 +202,9 @@ function renderQuestion(question, total) {
   meta.append(create("span", "question-position", position));
   if (state.mode === "train" && question.id !== numberInVariant) {
     meta.append(create("span", "topic-chip", `№ ${question.id} в оригинале`));
+  }
+  if (question.source === "reconstructed") {
+    meta.append(create("span", "topic-chip source-chip", "Восстановлено по контексту"));
   }
   if (question.topic) meta.append(create("span", "topic-chip", question.topic));
   const title = create("h2", "question-title", question.prompt);

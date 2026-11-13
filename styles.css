@@ -445,6 +445,12 @@ a { color: var(--accent); }
   line-height: 1.35;
 }
 
+.source-chip {
+  border-color: #615034;
+  background: #2b2419;
+  color: #f3d49a;
+}
+
 .question-title, .empty-card h2 {
   margin: 0;
   color: var(--text);
@@ -647,7 +653,7 @@ a { color: var(--accent); }
   .dashboard { grid-template-columns: minmax(0, 1fr); gap: 15px; margin-top: 15px; }
   .sidebar { gap: 12px; }
   .main-column { gap: 11px; }
-  .variant-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .variant-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .variant-button { min-height: 45px; }
   .variant-count { display: none; }
   .question-grid { grid-template-columns: repeat(10, minmax(0, 1fr)); }
